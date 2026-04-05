@@ -42,6 +42,27 @@
     "password": "Password",
     "enter": "Enter"
   },
+  "product": {
+    "add_to_cart": "In den Einkaufswagen",
+    "price": {
+      "including_tax": "inkl. MwSt."
+    },
+    "availability": {
+      "in_stock": "Auf Lager, in 2-3 Tagen bei dir",
+      "sold_out": "Derzeit nicht auf Lager"
+    },
+    "variants": {
+      "select": "Variante auswählen"
+    },
+    "gallery": {
+      "thumbnails": "Produktbilder",
+      "load_image": "Bild {{ index }} anzeigen",
+      "previous": "Vorheriges Bild",
+      "next": "Nächstes Bild",
+      "pagination": "Bildnavigation",
+      "go_to_image": "Zu Bild {{ index }}"
+    }
+  },
   "search": {
     "title": "Search",
     "placeholder": "Search articles, pages, or products",

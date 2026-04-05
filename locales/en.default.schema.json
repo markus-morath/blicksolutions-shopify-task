@@ -23,6 +23,7 @@
     "password": "Password",
     "primary": "Primary",
     "product": "Product",
+    "product_feature": "Product feature",
     "row": "Row",
     "search": "Search",
     "secondary": "Secondary",
@@ -35,10 +36,14 @@
   },
   "labels": {
     "alignment": "Alignment",
+    "availability_text": "Availability text",
     "background": "Background",
+    "button_color": "Button color",
+    "description": "Description",
     "foreground": "Foreground",
     "grid_gap": "Grid spacing",
     "grid_item_width": "Grid item width",
+    "icon": "Icon",
     "input_corner_radius": "Input corner radius",
     "layout_direction": "Layout direction",
     "menu": "Menu",
@@ -48,7 +53,8 @@
     "page_width": "Page width",
     "show_payment_icons": "Show payment icons",
     "text_style": "Text style",
-    "text": "Text"
+    "text": "Text",
+    "title": "Title"
   },
   "options": {
     "alignment": {
@@ -72,6 +78,6 @@
       "title": "Title",
       "subtitle": "Subtitle",
       "normal": "Normal text"
-    },
+    }
   }
 }
