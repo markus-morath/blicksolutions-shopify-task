@@ -88,7 +88,7 @@
     <div class="product-card__inner">
       <h1 class="product-card__title">{{ product.title }}</h1>
       {% if product.description != blank %}
-        <p class="product-card__description">{{ product.description }}</p>
+        <div class="product-card__description">{{ product.description }}</div>
       {% endif %}
 
       {% if product.type != blank %}
@@ -155,33 +155,33 @@
       {% endform %}
     </div>
   </div>
-</div>
 
-{% if section.blocks.size > 0 %}
-  <div class="product-features">
-    {% for block in section.blocks %}
-      {% if block.type == 'product-feature' %}
-        <div class="product-feature" {{ block.shopify_attributes }}>
-          <div class="product-feature__icon">
-            {% if block.settings.icon %}
-              {{ block.settings.icon | image_url: width: 96, height: 96 | image_tag: loading: 'lazy' }}
-            {% else %}
-              <img src="{{ 'badge.jpg' | asset_url }}" width="48" height="48" loading="lazy" alt="">
-            {% endif %}
+  {% if section.blocks.size > 0 %}
+    <div class="product-features">
+      {% for block in section.blocks %}
+        {% if block.type == 'product-feature' %}
+          <div class="product-feature" {{ block.shopify_attributes }}>
+            <div class="product-feature__icon">
+              {% if block.settings.icon %}
+                {{ block.settings.icon | image_url: width: 96, height: 96 | image_tag: loading: 'lazy' }}
+              {% else %}
+                <img src="{{ 'badge.jpg' | asset_url }}" width="48" height="48" loading="lazy" alt="">
+              {% endif %}
+            </div>
+            <div class="product-feature__text">
+              {% if block.settings.title != blank %}
+                <span class="product-feature__title">{{ block.settings.title }}</span>
+              {% endif %}
+              {% if block.settings.description != blank %}
+                <span class="product-feature__description">{{ block.settings.description }}</span>
+              {% endif %}
+            </div>
           </div>
-          <div class="product-feature__text">
-            {% if block.settings.title != blank %}
-              <span class="product-feature__title">{{ block.settings.title }}</span>
-            {% endif %}
-            {% if block.settings.description != blank %}
-              <span class="product-feature__description">{{ block.settings.description }}</span>
-            {% endif %}
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-{% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
 
 {% stylesheet %}
   .visually-hidden {
@@ -197,10 +197,10 @@
   }
 
   .product-page {
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 40px;
+    display: flex;
     align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
     padding: 40px 0;
   }
 
@@ -211,6 +211,7 @@
   }
 
   .product-gallery__thumbs {
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -248,6 +249,7 @@
   .product-gallery__area {
     display: flex;
     flex-direction: column;
+    max-width: 480px;
   }
 
   .product-gallery__main {
@@ -308,8 +310,10 @@
   }
 
   .product-card {
-    position: sticky;
-    top: 24px;
+    flex-shrink: 0;
+    width: 475px;
+    margin-top: 110px;
+    margin-left: 50px;
   }
 
   .product-card__inner {
@@ -331,7 +335,7 @@
 
   .product-card__description {
     font-size: 14px;
-    color: var(--product-muted);
+    color: #000000;
     margin: 8px 0 0;
     line-height: 1.6;
     font-family: var(--product-font);
@@ -374,7 +378,7 @@
 
   .product-card__tax-note {
     font-size: 13px;
-    color: var(--product-muted);
+    color: #000000;
     font-family: var(--product-font);
   }
 
@@ -420,6 +424,7 @@
   }
 
   .product-card__add-btn {
+    margin-top: 30px;
     display: block;
     width: 100%;
     margin-top: 24px;
@@ -430,7 +435,7 @@
     font-weight: 600;
     line-height: 1;
     border: none;
-    border-radius: 8px;
+    border-radius: 3px;
     cursor: pointer;
     transition: opacity 0.2s ease;
     text-align: center;
@@ -451,8 +456,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     padding: 40px 0 48px;
-    border-top: 1px solid var(--product-border);
-    margin-top: 8px;
+    margin: 8px auto 0;
+    max-width: 1100px;
+    width: 100%;
+    flex-basis: 100%;
   }
 
   .product-feature {
@@ -492,12 +499,13 @@
     font-size: 13px;
     font-weight: 400;
     line-height: 1.4;
-    color: var(--product-muted);
+    color: #000000;
   }
 
   @media (max-width: 768px) {
     .product-page {
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 0;
       padding: 0 0 16px;
     }
@@ -505,6 +513,10 @@
     .product-gallery {
       grid-template-columns: 1fr;
       gap: 0;
+    }
+
+    .product-gallery__area {
+      max-width: none;
     }
 
     .product-gallery__thumbs {
@@ -555,6 +567,8 @@
       position: static;
       padding: 0 16px;
       margin-top: 16px;
+      margin-left: 0;
+      width: 100%;
     }
 
     .product-card__inner {
@@ -563,10 +577,14 @@
     }
 
     .product-features {
+      display: grid;
       grid-template-columns: 1fr;
       gap: 20px;
       padding: 32px 16px 40px;
-      border-top: none;
+      margin: 0 auto;
+      max-width: none;
+      width: 100%;
+      flex-basis: auto;
     }
 
     .product-feature {

@@ -20,7 +20,7 @@
           }
         },
         "feature_2": {
-          "type": "product -feature",
+          "type": "product-feature",
           "settings": {
             "title": "100% Quality",
             "description": "Premium silicone material"
